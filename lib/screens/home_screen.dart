@@ -14,6 +14,13 @@ class _HomeScreenState extends State<HomeScreen> {
     const Color(0xFF10194E),
   ];
 
+  List transactionTypeColor = [
+    const Color(0xFF1DC7AC),
+    const Color(0xFFFE4A54),
+    const Color(0xFFFAAD39),
+    const Color(0xFF1DC7AC),
+  ];
+
   List imageAvatar = [
     'assets/images/avatar1.png',
     'assets/images/avatar2.png',
@@ -26,6 +33,20 @@ class _HomeScreenState extends State<HomeScreen> {
     'Mercy Popoola',
     'Onome Adetayo',
     'Kingsley Abiodun',
+  ];
+
+  List icons = [
+    'received_icon',
+    'sent_icon',
+    'received_icon',
+    'sent_icon',
+  ];
+
+  List transactionTitle = [
+    'Received',
+    'Failed',
+    'Sent',
+    'Received',
   ];
 
   @override
@@ -227,6 +248,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: TransactionTile(
                                   imageAvatar: imageAvatar[index],
                                   name: names[index],
+                                  icon: icons[index],
+                                  transactionTitle: transactionTitle[index],
+                                  transactionTypeColor:
+                                      transactionTypeColor[index],
                                 ),
                               );
                             })
@@ -248,9 +273,13 @@ class TransactionTile extends StatelessWidget {
     super.key,
     this.imageAvatar,
     this.name,
+    this.icon,
+    this.transactionTitle,
+    this.transactionTypeColor,
   });
 
-  final String? imageAvatar, name;
+  final String? imageAvatar, name, icon, transactionTitle;
+  final Color? transactionTypeColor;
 
   @override
   Widget build(BuildContext context) {
@@ -287,13 +316,13 @@ class TransactionTile extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: const Color(0xFF1DC7AC),
+                    color: transactionTypeColor,
                   ),
                   child: Row(
                     children: [
-                      SvgPicture.asset('assets/icons/received_icon.svg'),
+                      SvgPicture.asset('assets/icons/$icon.svg'),
                       Text(
-                        '  Received',
+                        '  $transactionTitle',
                         style: Theme.of(context)
                             .textTheme
                             .headlineSmall
@@ -309,7 +338,7 @@ class TransactionTile extends StatelessWidget {
         Text(
           '₦ 200,000',
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.w700, color: const Color(0xFF1DC7AC)),
+              fontWeight: FontWeight.w700, color: transactionTypeColor),
         ),
       ],
     );
