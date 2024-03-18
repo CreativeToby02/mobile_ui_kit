@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_ui_kit/onboarding_second_screen.dart';
+import 'package:mobile_ui_kit/screens/onboarding_second_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingFirstScreen extends StatelessWidget {

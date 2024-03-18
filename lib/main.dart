@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_ui_kit/onboarding_first_screen.dart';
+import 'package:mobile_ui_kit/screens/onboarding_first_screen.dart';
 import 'package:mobile_ui_kit/theme.dart';
 
 void main() {
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
